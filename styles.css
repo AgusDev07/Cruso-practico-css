@@ -394,3 +394,15 @@
 .product-info figure{
   margin: 0;
 }
+
+.product-info figure img:hover{
+  cursor: pointer;
+}
+
+.product-card:hover{
+  cursor: pointer;
+}
+
+.product-info div p:nth-child(2):hover{
+  color: var(--hospital-green);
+}
