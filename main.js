@@ -4,12 +4,15 @@ const mobileMenuActivator = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const menuCarrito = document.querySelector('.shopping-cart');
 const aside = document.querySelector('.product-detail');
-const cardsContainer = document.querySelector('.cards-container')
+const cardsContainer = document.querySelector('.cards-container');
+const abrirProdcuto = document.querySelector('.product-card');
+const productDescription = document.querySelector('.product-description');
 
 
 menuCarrito.addEventListener('click', toggleproductDetail);
 menuEmail.addEventListener('click', toggleDesktopMenu);
 mobileMenuActivator.addEventListener('click', toggleMobileMenu);
+
 
 
 function toggleDesktopMenu(){
@@ -191,3 +194,4 @@ function renderProducts(arr){
 }
 
 renderProducts(productList);
+
