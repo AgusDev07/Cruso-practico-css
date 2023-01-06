@@ -5,12 +5,14 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const menuCarrito = document.querySelector('.shopping-cart');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const cardsContainer = document.querySelector('.cards-container')
+const productDetailContainer = document.querySelector('#productDetail');
+const productDetailClose = document.querySelector('.product-detail-close');
 
 
 menuCarrito.addEventListener('click', toggleproductDetail);
 menuEmail.addEventListener('click', toggleDesktopMenu);
 mobileMenuActivator.addEventListener('click', toggleMobileMenu);
-
+productDetailClose.addEventListener('click', closeProductDetailAside);
 
 function toggleDesktopMenu(){
 
@@ -22,7 +24,7 @@ function toggleDesktopMenu(){
         }
 
     DesktopMenu.classList.toggle('inactive');
-} //lo que dice aqui es que cada vez que se le de click al mail en el menu mostrará el menu desktop
+} 
 
 function toggleMobileMenu(){
 
@@ -34,15 +36,20 @@ function toggleMobileMenu(){
             shoppingCartContainer.classList.add('inactive');
         }
 
-        
+        closeProductDetailAside();
 
     mobileMenu.classList.toggle('inactive');
-} //lo que dice aqui es que cada vez que se le de click al mail en el menu mostrará el menu mobile
+} 
 
 function toggleproductDetail(){
 
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     const isDesktopMenuClosed = DesktopMenu.classList.contains('inactive');
+    const isProductDetailCLosed = productDetailContainer.classList.contains('inactive');
+
+        if(!isProductDetailCLosed){
+            productDetailContainer.classList.add('inactive');
+        }
    
         if(!isMobileMenuClosed){
             mobileMenu.classList.add('inactive');
@@ -56,6 +63,23 @@ function toggleproductDetail(){
     
 } 
 
+function openProductDetailAside(){
+
+    shoppingCartContainer.classList.add('inactive');
+
+    productDetailContainer.classList.remove('inactive');
+
+    closeMenuMobile()
+}
+
+
+function closeMenuMobile(){
+    mobileMenu.classList.toggle('inactive');
+}
+
+function closeProductDetailAside(){
+    productDetailContainer.classList.add('inactive');
+}
 
 const productList = [];
 
@@ -158,6 +182,7 @@ function renderProducts(arr){
         
             const productImg = document.createElement('img')
             productImg.setAttribute('src',product.image)
+            productImg.addEventListener('click', openProductDetailAside);
         
             const productInfo = document.createElement('div');
             productInfo.classList.add('product-info');
@@ -191,3 +216,4 @@ function renderProducts(arr){
 }
 
 renderProducts(productList);
+
